@@ -10,7 +10,7 @@ def parse_args() -> argparse.Namespace:
         "--n",
         type=int,
         nargs="+",
-        required=False,
+        required=True,
         help="Size of motifs (number of nodes) to generate.",
     )
     parser.add_argument(
@@ -49,16 +49,12 @@ def main(args: argparse.Namespace) -> None:
         - Generates all possible motifs of that size
         - Prints the time taken to generate the motifs, as well as the number of motifs generated
         - Outputs the motifs in the required format, according to the specified output mode.
-    Raises:
-        ValueError: If n is not provided
     Args:
         args: The parsed command-line arguments
     """
     n_values = args.n
-    if n_values is None:
-        raise ValueError("n must be provided")
     for n in n_values:
-        print(f"Generating motif of size {n}...")
+        print(f"Generating motifs of size {n}...")
         start_time = time.time()
         print(f"Started at {time.ctime(start_time)}")
         motifs = generate_motifs(n)
