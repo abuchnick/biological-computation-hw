@@ -22,22 +22,22 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def prepare_textual_output(subgraphs: MotifList) -> str:
+def prepare_textual_output(motifs: MotifList) -> str:
     """
-    Prepare the textuual output for the given list of motifs, according to the format specified in the assignment.
+    Prepare the textual output for the given list of motifs, according to the format specified in the assignment.
     Args:
-        subgraphs: A list of weakly-connected non-isomorphic directed subgraphs
+        motifs: A list of motifs to be written to the output channel (file/console).
     Returns:
         The required textual output
     """
-    subgraph_size = len(subgraphs[0].nodes)
-    output = f"n={subgraph_size}\n"
-    output += f"count={len(subgraphs)}\n"
-    for i, subgraph in enumerate(subgraphs):
+    motif_size = len(motifs[0].nodes)
+    output = f"n={motif_size}\n"
+    output += f"count={len(motifs)}\n"
+    for i, motif in enumerate(motifs):
         output += f"#{i+1}\n"
-        for j, edge in enumerate(subgraph.edges):
+        for j, edge in enumerate(motif.edges):
             output += f"{edge[0]} {edge[1]}"
-            if not (i == len(subgraphs) - 1 and j == len(subgraph.edges) - 1):
+            if not (i == len(motifs) - 1 and j == len(motif.edges) - 1):
                 output += "\n"
     return output
 
