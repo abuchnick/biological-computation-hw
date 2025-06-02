@@ -174,3 +174,7 @@ cython_debug/
 .pypirc
 .DS_Store
 .vscode/launch.json
+
+# HW2
+hw2/motifs_*.txt
+hw2/subgraphs_*.txt
